@@ -71,6 +71,10 @@ const callChrome = async () => {
 
         page = await browser.newPage();
 
+        if (request.options && request.options.disableCache) {
+            await page.setCacheEnabled(false);
+        }
+
         if (request.options && request.options.disableJavascript) {
             await page.setJavaScriptEnabled(false);
         }

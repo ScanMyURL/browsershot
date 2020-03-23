@@ -642,6 +642,13 @@ class Browsershot
         return $this;
     }
 
+    public function disableCache(): self
+    {
+        $this->setOption('disableCache', true);
+
+        return $this;
+    }
+
     protected function getOptionArgs(): array
     {
         $args = $this->chromiumArguments;
