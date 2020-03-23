@@ -36,6 +36,19 @@ const callChrome = async () => {
     let remoteInstance;
 
     try {
+        // WebSocket URL
+        if (request.options.webSocketUrl) {
+            try {
+                browser = await puppeteer.connect({
+                    webSocketUrl: request.options.webSocketUrl,
+                    ignoreHTTPSErrors: request.options.ignoreHttpsErrors
+                });
+
+                remoteInstance = true;
+            } catch (exception) { /** does nothing. */}
+        }
+
+        // Remote instance URL
         if (request.options.remoteInstanceUrl) {
             try {
                 browser = await puppeteer.connect({
@@ -71,8 +84,8 @@ const callChrome = async () => {
                     request.continue();
             });
         }
-        
-        if (request.options && request.options.blockDomains) { 
+
+        if (request.options && request.options.blockDomains) {
             await page.setRequestInterception(true);
             var domainsArray = JSON.parse(request.options.blockDomains);
             page.on('request', request => {
@@ -84,7 +97,7 @@ const callChrome = async () => {
             });
         }
 
-        if (request.options && request.options.blockUrls) { 
+        if (request.options && request.options.blockUrls) {
             await page.setRequestInterception(true);
             var urlsArray = JSON.parse(request.options.blockUrls);
             page.on('request', request => {
@@ -94,7 +107,7 @@ const callChrome = async () => {
                 request.continue();
             });
         }
-        
+
         if (request.options && request.options.dismissDialogs) {
             page.on('dialog', async dialog => {
                 await dialog.dismiss();
