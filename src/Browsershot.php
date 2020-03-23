@@ -633,6 +633,15 @@ class Browsershot
         return $this;
     }
 
+    public function setWebSocketUrl(string $url): self
+    {
+        if ($url) {
+            $this->setOption('webSocketUrl', $url);
+        }
+
+        return $this;
+    }
+
     protected function getOptionArgs(): array
     {
         $args = $this->chromiumArguments;

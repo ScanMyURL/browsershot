@@ -1,7 +1,7 @@
 {
-    "name": "spatie/browsershot",
+    "name": "scanmyurl/browsershot",
     "description": "Convert a webpage to an image or pdf using headless Chrome",
-    "homepage": "https://github.com/spatie/browsershot",
+    "homepage": "https://github.com/ScanMyURL/browsershot",
     "keywords":
     [
         "convert",
@@ -20,6 +20,10 @@
             "email": "freek@spatie.be",
             "homepage": "https://github.com/freekmurze",
             "role": "Developer"
+        },
+        {
+            "name": "Corentin Chepeau",
+            "homepage": "https://scanmyurl.com"
         }
     ],
     "require": {
