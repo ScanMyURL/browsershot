@@ -38,14 +38,14 @@ const callChrome = async () => {
     try {
         // WebSocket URL
         if (request.options.webSocketUrl) {
-            try {
+            // try {
                 browser = await puppeteer.connect({
-                    webSocketUrl: request.options.webSocketUrl,
+                    browserWSEndpoint: request.options.webSocketUrl,
                     ignoreHTTPSErrors: request.options.ignoreHttpsErrors
                 });
 
                 remoteInstance = true;
-            } catch (exception) { /** does nothing. */}
+            // } catch (exception) { /** does nothing. */}
         }
 
         // Remote instance URL
